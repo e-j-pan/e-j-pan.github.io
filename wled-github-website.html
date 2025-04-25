@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLED Remote Control Guide</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f9fc;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #2d3748;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 15px 0;
+            color: #4a5568;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .remote-img {
+            display: block;
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #e2e8f0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #edf2f7;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        
+        .tab button.active {
+            background-color: #2d3748;
+            color: white;
+        }
+        
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            animation: fadeEffect 1s;
+        }
+        
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .effect-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .effect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2d3748;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WLED Remote Control Guide</h1>
+            <p>Complete documentation for controlling your bedroom ceiling LED lights</p>
+        </header>
+        
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Overview')" id="defaultOpen">Overview</button>
+            <button class="tablinks" onclick="openTab(event, 'RemoteGuide')">Remote Guide</button>
+            <button class="tablinks" onclick="openTab(event, 'Effects')">Effects</button>
+            <button class="tablinks" onclick="openTab(event, 'Troubleshooting')">Troubleshooting</button>
+        </div>
+        
+        <div id="Overview" class="tabcontent">
+            <div class="content">
+                <h2>About Your WLED Setup</h2>
+                <p>This guide provides complete documentation for the Tuya TS004F Zigbee remote that controls the bedroom ceiling WLED lights. Whether you're a family member or guest, this guide will help you use the remote effectively.</p>
+                
+                <h3>System Components</h3>
+                <ul>
+                    <li><strong>Controller:</strong> Dig-Uno-V3 ESP32</li>
+                    <li><strong>LED Strip:</strong> 480 addressable RGB LEDs</li>
+                    <li><strong>Remote:</strong> Tuya TS004F Zigbee Remote</li>
+                    <li><strong>Hub:</strong> Zigbee Coordinator integrated with Home Assistant</li>
+                    <li><strong>Software:</strong> WLED v0.15.0</li>
+                </ul>
+                
+                <h3>What is WLED?</h3>
+                <p>WLED is an open-source software that controls LED strips through an ESP microcontroller. Our setup supports 187 different lighting effects and 72 color palettes, all controllable via the remote, smartphone app, or Home Assistant dashboard.</p>
+                
+                <img src="https://raw.githubusercontent.com/Aircoookie/WLED-Docs/master/assets/images/wled_logo_akemi.png" alt="WLED Logo" class="remote-img">
+            </div>
+        </div>
+        
+        <div id="RemoteGuide" class="tabcontent">
+            <div class="content">
+                <h2>Tuya TS004F Remote Overview</h2>
+                <p>The Tuya TS004F (_TZ3000_abrsvsou) is a rotating knob remote with multiple control functions. This guide explains all the functions available with this remote.</p>
+                
+                <img src="https://raw.githubusercontent.com/Koenkk/zigbee2mqtt.io/master/docs/images/devices/TS004F_rotary.jpg" alt="Remote Control" class="remote-img">
+                
+                <h3>Button Controls</h3>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Short Press</td>
+                        <td>Toggle</td>
+                        <td>Turn the light on or off</td>
+                    </tr>
+                    <tr>
+                        <td>Long Press</td>
+                        <td>Colorloop</td>
+                        <td>Start a color cycling effect</td>
+                    </tr>
+                    <tr>
+                        <td>Long Release</td>
+                        <td>Stop Effect</td>
+                        <td>Return to solid color</td>
+                    </tr>
+                </table>
+                
+                <h3>Rotary Controls</h3>
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Function</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Slow Right Turn</td>
+                        <td>Brightness Up</td>
+                        <td>Increase brightness by 10%</td>
+                    </tr>
+                    <tr>
+                        <td>Slow Left Turn</td>
+                        <td>Brightness Down</td>
+                        <td>Decrease brightness by 10%</td>
+                    </tr>
+                    <tr>
+                        <td>Fast Right Turn</td>
+                        <td>Next Effect</td>
+                        <td>Change to next WLED effect</td>
+                    </tr>
+                    <tr>
+                        <td>Fast Left Turn</td>
+                        <td>Previous Effect</td>
+                        <td>Change to previous WLED effect</td>
+                    </tr>
+                    <tr>
+                        <td>Right Rotation</td>
+                        <td>Warmer</td>
+                        <td>Increase color temperature</td>
+                    </tr>
+                    <tr>
+                        <td>Left Rotation</td>
+                        <td>Cooler</td>
+                        <td>Decrease color temperature</td>
+                    </tr>
+                </table>
+                
+                <h3>Battery Replacement</h3>
+                <p>The remote uses a CR2450 battery. When the battery level drops below 10%, it's time to replace it.</p>
+                <ol>
+                    <li>Locate the small indent on the back of the remote</li>
+                    <li>Use a fingernail or small flat tool to gently pry open the back cover</li>
+                    <li>Remove the old CR2450 battery</li>
+                    <li>Insert the new CR2450 battery with the positive (+) side facing up</li>
+                    <li>Snap the back cover into place</li>
+                    <li>Test the remote to confirm it's working</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div id="Effects" class="tabcontent">
+            <div class="content">
+                <h2>WLED Effects Guide</h2>
+                <p>Your WLED installation supports 187 different effects. Here's a selection of recommended effects to try:</p>
+                
+                <div class="effects-grid">
+                    <div class="effect-card">
+                        <h3>Solid</h3>
+                        <p>Basic solid color</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Rainbow</h3>
+                        <p>Flowing rainbow pattern</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Colorloop</h3>
+                        <p>Cycles through all colors</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Multi Comet</h3>
+                        <p>Multiple shooting stars</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Twinkle</h3>
+                        <p>Gentle twinkling lights</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Fire 2012</h3>
+                        <p>Realistic fire simulation</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Aurora</h3>
+                        <p>Northern lights effect</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Plasma Ball</h3>
+                        <p>Energy plasma visualization</p>
+                    </div>
+                </div>
+                
+                <h3>Changing Effects</h3>
+                <p>You can change effects by:</p>
+                <ul>
+                    <li>Fast-rotating the remote knob right (next) or left (previous)</li>
+                    <li>Using the WLED app on your phone</li>
+                    <li>Using the Home Assistant dashboard</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="Troubleshooting" class="tabcontent">
+            <div class="content">
+                <h2>Troubleshooting</h2>
+                
+                <h3>Remote Not Responding</h3>
+                <ol>
+                    <li>Check if the battery is low (below 10%)</li>
+                    <li>Replace the CR2450 battery if needed</li>
+                    <li>Ensure the remote is within range of your Zigbee network</li>
+                    <li>Try restarting the remote by removing and reinserting the battery</li>
+                </ol>
+                
+                <h3>Light Shows Wrong Colors</h3>
+                <ol>
+                    <li>Check if the right effect is selected</li>
+                    <li>Try changing to Solid effect, then back to your desired effect</li>
+                    <li>Restart the WLED controller by toggling power</li>
+                </ol>
+                
+                <h3>Light Won't Turn On</h3>
+                <ol>
+                    <li>Check if the WLED controller has power</li>
+                    <li>Verify the WLED device is connected to your network</li>
+                    <li>Try restarting your Home Assistant server</li>
+                    <li>Check the automation is enabled in Home Assistant</li>
+                </ol>
+                
+                <h3>Connection Issues</h3>
+                <ol>
+                    <li>Ensure your Zigbee network is functioning properly</li>
+                    <li>Check if the WLED device has a valid IP address</li>
+                    <li>Verify Home Assistant can communicate with the WLED device</li>
+                </ol>
+            </div>
+        </div>
+        
+        <footer>
+            <p>WLED Remote Control Documentation - Created 2025</p>
+            <p>For more information about WLED, visit <a href="https://kno.wled.ge/" style="color: white;">WLED Project Website</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        // Open the default tab on page load
+        document.getElementById("defaultOpen").click();
+        
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>

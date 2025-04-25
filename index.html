@@ -175,6 +175,47 @@
                 border-radius: 0;
             }
         }
+        
+        /* Social media section styles */
+        .social-media-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .social-link {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book-button {
+            display: inline-block;
+            background-color: #2d3748;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .book-button:hover {
+            background-color: #1a202c;
+        }
     </style>
 </head>
 <body>
@@ -189,6 +230,7 @@
             <button class="tablinks" onclick="openTab(event, 'RemoteGuide')">Remote Guide</button>
             <button class="tablinks" onclick="openTab(event, 'Effects')">Effects</button>
             <button class="tablinks" onclick="openTab(event, 'Troubleshooting')">Troubleshooting</button>
+            <button class="tablinks" onclick="openTab(event, 'DJEvanium')">DJ.EVANIUM</button>
         </div>
         
         <div id="Overview" class="tabcontent">
@@ -378,6 +420,63 @@
                     <li>Check if the WLED device has a valid IP address</li>
                     <li>Verify Home Assistant can communicate with the WLED device</li>
                 </ol>
+            </div>
+        </div>
+        
+        <!-- New DJ.EVANIUM Section -->
+        <div id="DJEvanium" class="tabcontent">
+            <div class="content">
+                <h2>DJ.EVANIUM</h2>
+                <p>Experience the perfect soundtrack for your LED light shows! Follow DJ.EVANIUM on social media for the latest mixes, events, and music that pairs perfectly with your WLED effects.</p>
+                
+                <div class="social-media-container">
+                    <a href="https://soundcloud.com/evanium" target="_blank" class="social-link">
+                        <div class="social-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/145/145809.png" alt="SoundCloud" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                            <h3>SoundCloud</h3>
+                            <p>Listen to my latest mixes</p>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="social-link">
+                        <div class="social-card">
+                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                            <h3>Instagram</h3>
+                            <p>Follow for events & visuals</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <h3>Music + Lights = Perfect Atmosphere</h3>
+                <p>As DJ.EVANIUM, I create mixes specifically designed to complement LED lighting effects. Whether you're looking for beats to match your colorloop effect or ambient tracks for your Aurora display, my music will enhance your lighting experience.</p>
+                
+                <h3>Featured Mixes</h3>
+                <div class="effects-grid">
+                    <div class="effect-card">
+                        <h3>Neon Dreams</h3>
+                        <p>Perfect for Rainbow effects</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Pulse</h3>
+                        <p>Syncs with Twinkle patterns</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Midnight Glow</h3>
+                        <p>Ideal for Aurora lighting</p>
+                    </div>
+                    <div class="effect-card">
+                        <h3>Electric Flow</h3>
+                        <p>Pairs with Plasma Ball effect</p>
+                    </div>
+                </div>
+                
+                <h3>Upcoming Events</h3>
+                <div style="margin: 20px 0; padding: 15px; background-color: #f8fafc; border-radius: 10px; border-left: 5px solid #2d3748;">
+                    <p style="margin: 0;"><strong>Stay tuned!</strong> Follow DJ.EVANIUM on social media to get updates about upcoming performances and live streaming sessions.</p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="mailto:dj@evanium.com" class="book-button">Book DJ.EVANIUM For Your Event</a>
+                </div>
             </div>
         </div>
         

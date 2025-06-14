@@ -4,919 +4,692 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evanium - Personal Website</title>
+    <meta name="description" content="Welcome to Evanium.com - DJ, Smart Home Expert, Recipe Creator, and Developer">
+    <meta name="keywords" content="DJ, Music, Smart Home, Home Assistant, Recipes, Web Development">
+    <meta name="author" content="Evanium">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Evanium - Personal Website">
+    <meta property="og:description" content="DJ, Smart Home Expert, Recipe Creator, and Developer">
+    <meta property="og:url" content="https://evanium.com">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* Global Styles */
+        :root {
+            --primary: #2d3748;
+            --primary-light: #4a5568;
+            --primary-dark: #1a202c;
+            --accent: #4299e1;
+            --accent-light: #63b3ed;
+            --accent-dark: #3182ce;
+            --dj-primary: #8a2be2;
+            --dj-secondary: #4b0082;
+            --ha-blue: #03a9f4;
+            --recipe-brown: #8B5A2B;
+            --bg-light: #f7fafc;
+            --bg-dark: #1a202c;
+            --text-light: #718096;
+            --text-dark: #2d3748;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f7f9fc;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Header Styles */
+
+        /* Header */
         header {
-            background-color: #2d3748;
-            color: white;
-            padding: 20px 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
-        
+
         .logo {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
+            font-weight: 800;
+            color: var(--primary);
             text-decoration: none;
+            background: linear-gradient(135deg, var(--accent), var(--dj-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #a0aec0;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, #2d3748, #4a5568);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #4299e1;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #3182ce;
-        }
-        
-        /* Projects Section */
-        .projects {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #2d3748;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .project-card:hover {
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="20" cy="80" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--accent), var(--dj-primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-hover);
         }
-        
-        .project-image {
-            height: 200px;
-            background-color: #e2e8f0;
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2d3748;
-            font-size: 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
         }
-        
-        .project-content {
-            padding: 20px;
+
+        .feature-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
         }
-        
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .project-content p {
-            color: #4a5568;
+
+        .feature-card p {
+            color: var(--text-light);
             margin-bottom: 20px;
         }
-        
+
+        .feature-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .feature-link:hover {
+            color: var(--accent-dark);
+        }
+
         /* About Section */
         .about {
-            padding: 80px 0;
-            background-color: #e2e8f0;
+            background: var(--white);
         }
-        
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
         }
-        
+
         .about-image {
-            height: 400px;
-            background-color: #cbd5e0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
         }
-        
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--accent-light), var(--dj-primary));
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .profile-placeholder {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 4rem;
+        }
+
         .about-text h2 {
-            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            color: #2d3748;
+            color: var(--primary);
         }
-        
+
         .about-text p {
+            color: var(--text-light);
             margin-bottom: 20px;
-            color: #4a5568;
+            font-size: 1.1rem;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 30px;
         }
-        
+
         .social-links a {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #2d3748;
-            color: white;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--white);
             border-radius: 50%;
-            transition: background-color 0.3s;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        
+
         .social-links a:hover {
-            background-color: #4a5568;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
-        
+
         /* Footer */
         footer {
-            background-color: #2d3748;
-            color: white;
-            padding: 50px 0;
-            text-align: center;
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
             margin-bottom: 40px;
         }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 20px;
         }
-        
-        .footer-column ul {
+
+        .footer-section ul {
             list-style: none;
         }
-        
-        .footer-column ul li {
+
+        .footer-section ul li {
             margin-bottom: 10px;
         }
-        
-        .footer-column ul li a {
-            color: #a0aec0;
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
-        
-        .footer-column ul li a:hover {
-            color: white;
+
+        .footer-section ul li a:hover {
+            color: var(--white);
         }
-        
-        .copyright {
-            border-top: 1px solid #4a5568;
-            padding-top: 20px;
-            font-size: 0.9rem;
-            color: #a0aec0;
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
         }
-        
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
+            .mobile-menu-toggle {
+                display: block;
             }
-            
+
             nav ul {
-                margin-top: 20px;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
             }
-            
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 10px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
-        }
-        
-        /* Frame for displaying other HTML content */
-        .content-frame {
-            width: 100%;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        
-        .modal-content {
-            position: relative;
-            background-color: white;
-            margin: 5% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 1000px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container header-content">
-            <a href="#" class="logo">Evanium</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <section id="home" class="hero">
         <div class="container">
-            <h1>Hi there 👋</h1>
-            <p>Welcome to evanium.com - My personal website showcasing my projects, recipes, and smart home documentation.</p>
-            <a href="#projects" class="btn">View My Projects</a>
-        </div>
-    </section>
-    
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">WLED Remote Control Guide</div>
-                    <div class="project-content">
-                        <h3>WLED Remote Control Guide</h3>
-                        <p>Complete documentation for controlling your bedroom ceiling LED lights with the Tuya TS004F Zigbee remote.</p>
-                        <a href="#" class="btn" onclick="openModal('wled-modal')">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Recipe Collection</div>
-                    <div class="project-content">
-                        <h3>Recipe Collection</h3>
-                        <p>A collection of my favorite recipes, including the Walnut Almond Chia Milk made with the Nutr machine.</p>
-                        <a href="#" class="btn" onclick="openModal('recipe-modal')">View Recipes</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">GitHub Profile</div>
-                    <div class="project-content">
-                        <h3>GitHub Profile</h3>
-                        <p>Check out my GitHub profile to see my coding projects and contributions.</p>
-                        <a href="https://github.com/e-j-pan" class="btn" target="_blank">Visit GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="about" class="about">
-        <div class="container about-content">
-            <div class="about-image">
-                <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-            </div>
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p>Hello! I'm the creator of evanium.com. I'm passionate about smart home technology, cooking, and web development.</p>
-                <p>This website showcases some of my projects, including my WLED lighting setup documentation and favorite recipes.</p>
-                <p>Feel free to explore the site and check out my GitHub profile for more of my work!</p>
-                <div class="social-links">
-                    <a href="https://github.com/e-j-pan" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                    <a href="#" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                    <a href="#" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form id="contact-form">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                    <div>
-                        <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
-                        <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #cbd5e0;">
-                    </div>
-                    <div>
-                        <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
-                        <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #cbd5e0;">
-                    </div>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <label for="message" style="display: block; margin-bottom: 5px;">Message</label>
-                    <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #cbd5e0;"></textarea>
-                </div>
-                <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
-            </form>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Evanium</h3>
-                    <p>A personal website showcasing projects, recipes, and smart home documentation.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Links</h3>
-                    <ul>
+            <div class="header-content">
+                <a href="/" class="logo">EVANIUM</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <nav>
+                    <ul id="nav-menu">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="/pages/dj/">DJ</a></li>
+                        <li><a href="/pages/homeassistant/">Smart Home</a></li>
+                        <li><a href="/pages/recipes/">Recipes</a></li>
+                        <li><a href="/pages/projects/">Projects</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="https://github.com/e-j-pan" target="_blank">GitHub</a></li>
-                        <li><a href="#" target="_blank">LinkedIn</a></li>
-                        <li><a href="#" target="_blank">Twitter</a></li>
-                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi there 👋</h1>
+                <p class="subtitle">Welcome to my digital space - where music meets technology, creativity meets functionality</p>
+                <div class="cta-buttons">
+                    <a href="/pages/dj/" class="btn btn-primary">
+                        🎵 Explore My Music
+                    </a>
+                    <a href="/pages/homeassistant/" class="btn btn-secondary">
+                        🏠 Smart Home Docs
+                    </a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Evanium. All rights reserved.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What I Do</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>DJ & Music Production</h3>
+                    <p>Creating immersive musical experiences with custom lighting shows and cutting-edge sound design.</p>
+                    <a href="/pages/dj/" class="feature-link">Explore Music →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Smart Home Automation</h3>
+                    <p>Home Assistant expert with comprehensive guides for WLED lighting, remotes, and scene automation.</p>
+                    <a href="/pages/homeassistant/" class="feature-link">View Docs →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Recipe Development</h3>
+                    <p>Crafting healthy, delicious recipes with detailed nutrition information and step-by-step guides.</p>
+                    <a href="/pages/recipes/" class="feature-link">Browse Recipes →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, modern websites and applications with clean code and great user experiences.</p>
+                    <a href="/pages/projects/" class="feature-link">View Projects →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-placeholder">
+                        👨‍💻
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a multi-passionate creator who loves exploring the intersection of technology, music, and everyday life. From spinning tracks as DJ.EVANIUM to automating smart homes with Home Assistant, I'm always looking for ways to blend creativity with functionality.</p>
+                    
+                    <p>This website is my digital playground where I share my projects, document my smart home setup, showcase my favorite recipes, and connect with others who share similar interests.</p>
+                    
+                    <p>When I'm not coding or mixing music, you'll find me experimenting in the kitchen or tinkering with the latest smart home gadgets.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/e-j-pan" target="_blank" title="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://soundcloud.com/evanium" target="_blank" title="SoundCloud">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 17.939h-1v-8.068c.308-.231.639-.429 1-.566v8.634zm3 0h1v-9.224c-.229-.265-.443-.548-.621-.848l-.379-.848v10.92zm2 0h1v-8.848c-.508-.079-.623-.05-1-.01v8.858zm1 0h1v-8.758c-.377-.04-.492-.069-1 .01v8.748zm1 0h1v-9.298c-.178.3-.392.583-.621.848v8.45zm1 0h1v-8.758c-.228-.274-.375-.576-.621-.848l-.379-.174v9.78zm7-17.705c0 2.8-2.2 5.065-5 5.065s-5-2.265-5-5.065c0-2.8 2.2-5.065 5-5.065s5 2.265 5 5.065zm-5 3.705c-2.058 0-3.73-1.672-3.73-3.73 0-2.058 1.672-3.73 3.73-3.73 2.058 0 3.73 1.672 3.73 3.73 0 2.058-1.672 3.73-3.73 3.73z"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" title="Contact">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Evanium</h3>
+                    <p>A digital space where music meets technology, creativity meets functionality.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="https://github.com/e-j-pan" target="_blank" title="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://soundcloud.com/evanium" target="_blank" title="SoundCloud">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7 17.939h-1v-8.068c.308-.231.639-.429 1-.566v8.634zm3 0h1v-9.224c-.229-.265-.443-.548-.621-.848l-.379-.848v10.92zm2 0h1v-8.848c-.508-.079-.623-.05-1-.01v8.858zm1 0h1v-8.758c-.377-.04-.492-.069-1 .01v8.748zm1 0h1v-9.298c-.178.3-.392.583-.621.848v8.45zm1 0h1v-8.758c-.228-.274-.375-.576-.621-.848l-.379-.174v9.78zm7-17.705c0 2.8-2.2 5.065-5 5.065s-5-2.265-5-5.065c0-2.8 2.2-5.065 5-5.065s5 2.265 5 5.065zm-5 3.705c-2.058 0-3.73-1.672-3.73-3.73 0-2.058 1.672-3.73 3.73-3.73 2.058 0 3.73 1.672 3.73 3.73 0 2.058-1.672 3.73-3.73 3.73z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="/pages/dj/">DJ Music</a></li>
+                        <li><a href="/pages/homeassistant/">Smart Home</a></li>
+                        <li><a href="/pages/recipes/">Recipes</a></li>
+                        <li><a href="/pages/projects/">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Projects</h3>
+                    <ul>
+                        <li><a href="/pages/homeassistant/wled-guide.html">WLED Remote Guide</a></li>
+                        <li><a href="/pages/homeassistant/gradients.html">HA Color Gradients</a></li>
+                        <li><a href="/pages/recipes/walnut-chia-milk.html">Nut Milk Recipe</a></li>
+                        <li><a href="https://github.com/e-j-pan" target="_blank">GitHub Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Ready to collaborate or have questions about my projects?</p>
+                    <p style="margin-top: 10px;">
+                        <a href="mailto:hello@evanium.com" style="color: var(--accent-light); text-decoration: none;">
+                            hello@evanium.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Evanium. Made with ❤️ and lots of ☕</p>
             </div>
         </div>
     </footer>
-    
-    <!-- WLED Modal -->
-    <div id="wled-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('wled-modal')">&times;</span>
-            <div id="wled-content">
-                <!-- WLED Remote Control Guide Content -->
-                <header>
-                    <h1>WLED Remote Control Guide</h1>
-                    <p>Complete documentation for controlling your bedroom ceiling LED lights</p>
-                </header>
-                
-                <div class="tab">
-                    <button class="tablinks" onclick="openWLEDTab(event, 'Overview')" id="defaultOpen">Overview</button>
-                    <button class="tablinks" onclick="openWLEDTab(event, 'RemoteGuide')">Remote Guide</button>
-                    <button class="tablinks" onclick="openWLEDTab(event, 'Effects')">Effects</button>
-                    <button class="tablinks" onclick="openWLEDTab(event, 'Troubleshooting')">Troubleshooting</button>
-                </div>
-                
-                <div id="Overview" class="tabcontent" style="display:block;">
-                    <div class="content">
-                        <h2>About Your WLED Setup</h2>
-                        <p>This guide provides complete documentation for the Tuya TS004F Zigbee remote that controls the bedroom ceiling WLED lights. Whether you're a family member or guest, this guide will help you use the remote effectively.</p>
-                        
-                        <h3>System Components</h3>
-                        <ul>
-                            <li><strong>Controller:</strong> Dig-Uno-V3 ESP32</li>
-                            <li><strong>LED Strip:</strong> 480 addressable RGB LEDs</li>
-                            <li><strong>Remote:</strong> Tuya TS004F Zigbee Remote</li>
-                            <li><strong>Hub:</strong> Zigbee Coordinator integrated with Home Assistant</li>
-                            <li><strong>Software:</strong> WLED v0.15.0</li>
-                        </ul>
-                        
-                        <h3>What is WLED?</h3>
-                        <p>WLED is an open-source software that controls LED strips through an ESP microcontroller. Our setup supports 187 different lighting effects and 72 color palettes, all controllable via the remote, smartphone app, or Home Assistant dashboard.</p>
-                        
-                        <img src="https://raw.githubusercontent.com/Aircoookie/WLED-Docs/master/assets/images/wled_logo_akemi.png" alt="WLED Logo" style="display: block; max-width: 300px; margin: 20px auto;">
-                    </div>
-                </div>
-                
-                <div id="RemoteGuide" class="tabcontent">
-                    <!-- Remote guide content here -->
-                </div>
-                
-                <div id="Effects" class="tabcontent">
-                    <!-- Effects content here -->
-                </div>
-                
-                <div id="Troubleshooting" class="tabcontent">
-                    <!-- Troubleshooting content here -->
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Recipe Modal -->
-    <div id="recipe-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('recipe-modal')">&times;</span>
-            <div id="recipe-content">
-                <!-- Recipe Card Content -->
-                <div style="max-width: 800px; margin: 30px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-                    <div style="background: linear-gradient(to right, #8B5A2B, #A67C52); color: white; padding: 25px; text-align: center; position: relative;">
-                        <div style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                            <svg viewBox="0 0 24 24" width="45" height="45" fill="#8B5A2B">
-                                <path d="M18.32,4.26C16.84,3.05,15.01,2.25,13,2.05v2.02c1.46,0.18,2.79,0.76,3.9,1.62L18.32,4.26z M19.93,11h2.02 c-0.2-2.01-1-3.84-2.21-5.32L18.31,7.1C19.17,8.21,19.75,9.54,19.93,11z M18.31,16.9l1.43,1.43c1.21-1.48,2.01-3.32,2.21-5.32 h-2.02C19.75,14.46,19.17,15.79,18.31,16.9z M13,19.93v2.02c2.01-0.2,3.84-1,5.32-2.21l-1.43-1.43 C15.79,19.17,14.46,19.75,13,19.93z M13,12V7h-2v5H7l5,5l5-5H13z M11,19.93v2.02c-2.01-0.2-3.84-1-5.32-2.21l1.43-1.43 C8.21,19.17,9.54,19.75,11,19.93z M4.26,5.68C3.05,7.16,2.25,8.99,2.05,11h2.02c0.18-1.46,0.76-2.79,1.62-3.9L4.26,5.68z M4.26,18.32l1.43-1.43c-0.86-1.1-1.44-2.43-1.62-3.9H2.05C2.25,15.01,3.05,16.84,4.26,18.32z"></path>
-                            </svg>
-                        </div>
-                        <h1 style="font-size: 28px; margin-bottom: 5px;">Walnut Almond Chia Milk</h1>
-                        <p style="font-size: 16px; opacity: 0.9;">Creamy homemade plant-based milk with the Nutr machine</p>
-                    </div>
-                    
-                    <div style="padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                        <div style="grid-column: 1 / 2; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); height: 300px; background-color: #f9f5f0; position: relative;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8B5A2B;">
-                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 19h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2z"></path>
-                                    <circle cx="12" cy="13" r="3"></circle>
-                                    <path d="M16.5 7.5v-2a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v2"></path>
-                                </svg>
-                                <p style="margin-top: 15px;">Walnut Almond Chia Milk</p>
-                            </div>
-                        </div>
-                        
-                        <div style="grid-column: 2 / 3; background: #f9f5f0; padding: 20px; border-radius: 12px;">
-                            <h3 style="color: #8B5A2B; margin-bottom: 15px; display: flex; align-items: center; font-size: 20px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
-                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                </svg>
-                                Ingredients
-                            </h3>
-                            <ul style="list-style-type: none;">
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 cup</strong> raw walnuts</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 cup</strong> raw almonds</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1 tablespoon</strong> chia seeds</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1-2</strong> dates or <strong>1 tsp</strong> maple syrup (optional)</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 tsp</strong> vanilla extract or cinnamon (optional)</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;">Pinch of salt</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1 1/2 cups</strong> filtered water</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Instructions section would go here but trimmed for brevity -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+
     <script>
-        // Modal Functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-            if (modalId === 'wled-modal') {
-                document.getElementById("defaultOpen").click();
-            }
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
         }
-        
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-        
-        // WLED Tab Functions
-        function openWLEDTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
-        }
-        
-        // Handle contact form submission
-        document.getElementById("contact-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Thank you for your message! This is a demo form, and in a real implementation, this would send your message to the site owner.");
-            document.getElementById("contact-form").reset();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
-        
-        // Initialize the WLED tab content with the full HTML content
-        function initWLEDContent() {
-            // Remote Guide Tab Content
-            document.getElementById("RemoteGuide").innerHTML = `
-                <div class="content">
-                    <h2>Tuya TS004F Remote Overview</h2>
-                    <p>The Tuya TS004F (_TZ3000_abrsvsou) is a rotating knob remote with multiple control functions. This guide explains all the functions available with this remote.</p>
-                    
-                    <img src="https://raw.githubusercontent.com/Koenkk/zigbee2mqtt.io/master/docs/images/devices/TS004F_rotary.jpg" alt="Remote Control" style="display: block; max-width: 300px; margin: 20px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                    
-                    <h3>Button Controls</h3>
-                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                        <tr>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Action</th>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Function</th>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Description</th>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Short Press</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Toggle</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Turn the light on or off</td>
-                        </tr>
-                        <tr style="background-color: #f8fafc;">
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Long Press</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Colorloop</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Start a color cycling effect</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Long Release</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Stop Effect</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Return to solid color</td>
-                        </tr>
-                    </table>
-                    
-                    <h3>Rotary Controls</h3>
-                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                        <tr>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Action</th>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Function</th>
-                            <th style="padding: 12px; text-align: left; background-color: #edf2f7; font-weight: bold; border: 1px solid #e2e8f0;">Description</th>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Slow Right Turn</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Brightness Up</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Increase brightness by 10%</td>
-                        </tr>
-                        <tr style="background-color: #f8fafc;">
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Slow Left Turn</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Brightness Down</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Decrease brightness by 10%</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Fast Right Turn</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Next Effect</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Change to next WLED effect</td>
-                        </tr>
-                        <tr style="background-color: #f8fafc;">
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Fast Left Turn</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Previous Effect</td>
-                            <td style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Change to previous WLED effect</td>
-                        </tr>
-                    </table>
-                    
-                    <h3>Battery Replacement</h3>
-                    <p>The remote uses a CR2450 battery. When the battery level drops below 10%, it's time to replace it.</p>
-                    <ol>
-                        <li>Locate the small indent on the back of the remote</li>
-                        <li>Use a fingernail or small flat tool to gently pry open the back cover</li>
-                        <li>Remove the old CR2450 battery</li>
-                        <li>Insert the new CR2450 battery with the positive (+) side facing up</li>
-                        <li>Snap the back cover into place</li>
-                        <li>Test the remote to confirm it's working</li>
-                    </ol>
-                </div>
-            `;
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.mobile-menu-toggle');
             
-            // Effects Tab Content
-            document.getElementById("Effects").innerHTML = `
-                <div class="content">
-                    <h2>WLED Effects Guide</h2>
-                    <p>Your WLED installation supports 187 different effects. Here's a selection of recommended effects to try:</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 20px 0;">
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Solid</h3>
-                            <p>Basic solid color</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Rainbow</h3>
-                            <p>Flowing rainbow pattern</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Colorloop</h3>
-                            <p>Cycles through all colors</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Multi Comet</h3>
-                            <p>Multiple shooting stars</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Twinkle</h3>
-                            <p>Gentle twinkling lights</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Fire 2012</h3>
-                            <p>Realistic fire simulation</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Aurora</h3>
-                            <p>Northern lights effect</p>
-                        </div>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 5px; padding: 10px; text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                            <h3>Plasma Ball</h3>
-                            <p>Energy plasma visualization</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Changing Effects</h3>
-                    <p>You can change effects by:</p>
-                    <ul>
-                        <li>Fast-rotating the remote knob right (next) or left (previous)</li>
-                        <li>Using the WLED app on your phone</li>
-                        <li>Using the Home Assistant dashboard</li>
-                    </ul>
-                </div>
-            `;
-            
-            // Troubleshooting Tab Content
-            document.getElementById("Troubleshooting").innerHTML = `
-                <div class="content">
-                    <h2>Troubleshooting</h2>
-                    
-                    <h3>Remote Not Responding</h3>
-                    <ol>
-                        <li>Check if the battery is low (below 10%)</li>
-                        <li>Replace the CR2450 battery if needed</li>
-                        <li>Ensure the remote is within range of your Zigbee network</li>
-                        <li>Try restarting the remote by removing and reinserting the battery</li>
-                    </ol>
-                    
-                    <h3>Light Shows Wrong Colors</h3>
-                    <ol>
-                        <li>Check if the right effect is selected</li>
-                        <li>Try changing to Solid effect, then back to your desired effect</li>
-                        <li>Restart the WLED controller by toggling power</li>
-                    </ol>
-                    
-                    <h3>Light Won't Turn On</h3>
-                    <ol>
-                        <li>Check if the WLED controller has power</li>
-                        <li>Verify the WLED device is connected to your network</li>
-                        <li>Try restarting your Home Assistant server</li>
-                        <li>Check the automation is enabled in Home Assistant</li>
-                    </ol>
-                    
-                    <h3>Connection Issues</h3>
-                    <ol>
-                        <li>Ensure your Zigbee network is functioning properly</li>
-                        <li>Check if the WLED device has a valid IP address</li>
-                        <li>Verify Home Assistant can communicate with the WLED device</li>
-                    </ol>
-                </div>
-            `;
-        }
-        
-        // Initialize the recipe content
-        function initRecipeContent() {
-            // Complete recipe content
-            document.getElementById("recipe-content").innerHTML = `
-                <div style="max-width: 800px; margin: 30px auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-                    <div style="background: linear-gradient(to right, #8B5A2B, #A67C52); color: white; padding: 25px; text-align: center; position: relative;">
-                        <div style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                            <svg viewBox="0 0 24 24" width="45" height="45" fill="#8B5A2B">
-                                <path d="M18.32,4.26C16.84,3.05,15.01,2.25,13,2.05v2.02c1.46,0.18,2.79,0.76,3.9,1.62L18.32,4.26z M19.93,11h2.02 c-0.2-2.01-1-3.84-2.21-5.32L18.31,7.1C19.17,8.21,19.75,9.54,19.93,11z M18.31,16.9l1.43,1.43c1.21-1.48,2.01-3.32,2.21-5.32 h-2.02C19.75,14.46,19.17,15.79,18.31,16.9z M13,19.93v2.02c2.01-0.2,3.84-1,5.32-2.21l-1.43-1.43 C15.79,19.17,14.46,19.75,13,19.93z M13,12V7h-2v5H7l5,5l5-5H13z M11,19.93v2.02c-2.01-0.2-3.84-1-5.32-2.21l1.43-1.43 C8.21,19.17,9.54,19.75,11,19.93z M4.26,5.68C3.05,7.16,2.25,8.99,2.05,11h2.02c0.18-1.46,0.76-2.79,1.62-3.9L4.26,5.68z M4.26,18.32l1.43-1.43c-0.86-1.1-1.44-2.43-1.62-3.9H2.05C2.25,15.01,3.05,16.84,4.26,18.32z"></path>
-                            </svg>
-                        </div>
-                        <h1 style="font-size: 28px; margin-bottom: 5px;">Walnut Almond Chia Milk</h1>
-                        <p style="font-size: 16px; opacity: 0.9;">Creamy homemade plant-based milk with the Nutr machine</p>
-                    </div>
-                    
-                    <div style="padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                        <div style="grid-column: 1 / 2; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); height: 300px; background-color: #f9f5f0; position: relative;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #8B5A2B;">
-                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 19h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2z"></path>
-                                    <circle cx="12" cy="13" r="3"></circle>
-                                    <path d="M16.5 7.5v-2a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v2"></path>
-                                </svg>
-                                <p style="margin-top: 15px;">Walnut Almond Chia Milk</p>
-                            </div>
-                        </div>
-                        
-                        <div style="grid-column: 2 / 3; background: #f9f5f0; padding: 20px; border-radius: 12px;">
-                            <h3 style="color: #8B5A2B; margin-bottom: 15px; display: flex; align-items: center; font-size: 20px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
-                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                </svg>
-                                Ingredients
-                            </h3>
-                            <ul style="list-style-type: none;">
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 cup</strong> raw walnuts</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 cup</strong> raw almonds</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1 tablespoon</strong> chia seeds</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1-2</strong> dates or <strong>1 tsp</strong> maple syrup (optional)</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1/4 tsp</strong> vanilla extract or cinnamon (optional)</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;">Pinch of salt</li>
-                                <li style="margin-bottom: 8px; padding-left: 15px; position: relative;"><strong>1 1/2 cups</strong> filtered water</li>
-                            </ul>
-                        </div>
-                        
-                        <div style="grid-column: 1 / 3;">
-                            <h3 style="color: #8B5A2B; margin-bottom: 15px; display: flex; align-items: center; font-size: 20px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
-                                    <polyline points="9 11 12 14 22 4"></polyline>
-                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-                                </svg>
-                                Instructions
-                            </h3>
-                            
-                            <div style="margin-bottom: 20px; display: flex;">
-                                <div style="background: #8B5A2B; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">1</div>
-                                <div>
-                                    <h4 style="color: #8B5A2B; margin-bottom: 5px;">Pre-soak nuts (optional but recommended)</h4>
-                                    <p>Soak the walnuts and almonds in water for 4-8 hours or overnight in the refrigerator. This softens them and makes a creamier milk. Drain and rinse thoroughly before using.</p>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-bottom: 20px; display: flex;">
-                                <div style="background: #8B5A2B; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">2</div>
-                                <div>
-                                    <h4 style="color: #8B5A2B; margin-bottom: 5px;">Prepare the Nutr machine</h4>
-                                    <p>Make sure your Nutr machine is clean and plugged in. Add the soaked and rinsed walnuts and almonds to the Nutr chamber. Add the chia seeds. Add any optional sweeteners or flavorings. Add the filtered water to the fill line (approximately 1 1/2 cups).</p>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-bottom: 20px; display: flex;">
-                                <div style="background: #8B5A2B; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">3</div>
-                                <div>
-                                    <h4 style="color: #8B5A2B; margin-bottom: 5px;">Select program and blend</h4>
-                                    <p>Close the lid securely. Press the power button to turn on the machine. Choose the "Nuts" program (typically by pressing the program button until you reach the nut setting). Press start and let the machine complete its cycle (approximately 5-7 minutes).</p>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-bottom: 20px; display: flex;">
-                                <div style="background: #8B5A2B; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">4</div>
-                                <div>
-                                    <h4 style="color: #8B5A2B; margin-bottom: 5px;">Strain if desired</h4>
-                                    <p>Your milk is ready to use directly from the machine. For an extra-smooth texture, you can strain it through a nut milk bag or fine mesh strainer.</p>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-bottom: 20px; display: flex;">
-                                <div style="background: #8B5A2B; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; flex-shrink: 0;">5</div>
-                                <div>
-                                    <h4 style="color: #8B5A2B; margin-bottom: 5px;">Storage</h4>
-                                    <p>Transfer to a sealed container. Refrigerate and use within 3-5 days. Shake well before each use as separation is natural.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="grid-column: 1 / 3; background: #f0f7f4; padding: 20px; border-radius: 12px; margin-top: 20px; border-left: 4px solid #8B5A2B;">
-                            <h3 style="color: #8B5A2B; margin-bottom: 15px; display: flex; align-items: center; font-size: 20px;">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 10px;">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                                </svg>
-                                Tips
-                            </h3>
-                            <p>For a thicker consistency, add 1-2 more tablespoons of chia seeds and let the mixture sit for 10 minutes after blending. This creates a delicious pudding-like texture! For additional flavor variations, try adding a dash of cardamom, nutmeg, or cocoa powder.</p>
-                        </div>
-                        
-                        <div style="grid-column: 1 / 3; display: flex; justify-content: space-around; margin-top: 20px; padding: 15px; background: #f9f5f0; border-radius: 12px;">
-                            <div style="text-align: center;">
-                                <div style="font-size: 24px; font-weight: bold; color: #8B5A2B;">300</div>
-                                <div style="font-size: 14px; color: #666;">Calories</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 24px; font-weight: bold; color: #8B5A2B;">8g</div>
-                                <div style="font-size: 14px; color: #666;">Protein</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 24px; font-weight: bold; color: #8B5A2B;">26g</div>
-                                <div style="font-size: 14px; color: #666;">Healthy Fats</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div style="font-size: 24px; font-weight: bold; color: #8B5A2B;">5g</div>
-                                <div style="font-size: 14px; color: #666;">Fiber</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 20px; color: #777; font-size: 14px;">
-                        <p>Made with ♥ using your Nutr Plant-Based Milk Maker</p>
-                        <p>Recipe created on May 18, 2025</p>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Call initialization functions when DOM content loads
-        document.addEventListener("DOMContentLoaded", function() {
-            initWLEDContent();
-            initRecipeContent();
+            if (!navMenu.contains(e.target) && !toggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
         });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Collection - Healthy & Delicious | Evanium</title>
+    <meta name="description" content="Collection of healthy, delicious recipes with detailed nutrition information and step-by-step guides.">
+    <meta name="keywords" content="Recipes, Healthy Food, Plant-Based, Nutrition, Cooking, Nut Milk, Vegan">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Recipe Collection - Healthy & Delicious">
+    <meta property="og:description" content="Collection of healthy recipes with nutrition information">
+    <meta property="og:url" content="https://evanium.com/pages/recipes/">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --recipe-primary: #8B5A2B;
+            --recipe-secondary: #A67C52;
+            --recipe-accent: #D2B48C;
+            --recipe-green: #7CB342;
+            --recipe-red: #E53935;
+            --recipe-orange: #FB8C00;
+            --primary: #2E7D32;
+            --background: #f9f5f0;
+            --background-dark: #f5f1ec;
+            --white: #ffffff;
+            --text-primary: #2E2E2E;
+            --text-secondary: #6B6B6B;
+            --border: #E8E3DC;
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-hover: 0 8px 15px rgba(0,0,0,0.1);
+            --gradient-recipe: linear-gradient(135deg, var(--recipe-primary) 0%, var(--recipe-secondary) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--recipe-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: '🍽️';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--recipe-primary);
+        }
+
+        .back-home {
+            background: var(--gradient-recipe);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-recipe);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="food" width="20" height="20" patternUnits="userSpaceOnUse"><text x="10" y="15" font-size="12" text-anchor="middle" fill="rgba(255,255,255,0.1)">🥜</text></pattern></defs><rect width="100" height="100" fill="url(%23food)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--recipe-primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--recipe-primary);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--border);
+            background: var(--white);
+            color: var(--text-secondary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--recipe-primary);
+            color: var(--white);
+            border-color: var(--recipe-primary);
+        }
+
+        /* Recipe Grid */
+        .recipes-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-primary);
+        }
+
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .recipe-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .recipe-image {
+            height: 200px;
+            background: var(--background-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--recipe-accent) 0%, var(--recipe-secondary) 100%);
+            opacity: 0.1;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .difficulty-easy {
+            background: var(--recipe-green);
+            color: var(--white);
+        }
+
+        .difficulty-medium {
+            background: var(--recipe-orange);
+            color: var(--white);
+        }
+
+        .difficulty-hard {
+            background: var(--recipe-red);
+            color: var(--white);
+        }
+
+        .recipe-content {
+            padding: 25px;
+        }
+
+        .recipe-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .recipe-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .recipe-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .recipe-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .recipe-servings {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .recipe-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .recipe-tag {
+            background: var(--background-dark);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .recipe-tag.vegan {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--recipe-green);
+        }
+
+        .recipe-tag.gluten-free {
+            background: rgba(255, 193, 7, 0.1);
+            color: var(--recipe-orange);
+        }
+
+        .recipe-tag.high-protein {
+            background: rgba(233, 30, 99, 0.1);
+            color: var(--recipe-red);
+        }
+
+        .recipe-nutrition {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--background-dark);
+            border-radius: 8px;
+        }
+
+        .nutrition-item {
+            text-align: center;
+        }
+
+        .nutrition-value {
+            font-weight: 600;
+            color: var(--recipe-primary);
+            font-size: 1.1rem;
+        }
+
+        .nutrition-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .recipe-link {
+            color: var(--recipe-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .recipe-link:hover {
+            color: var(--recipe-secondary);
+        }
+
+        /* Featured Recipe */
+        .featured-recipe {
+            background: var(--white);
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-image {
+            height: 400px;
+            background: var(--background-dark);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-recipe);
+            opacity: 0.1;
+        }
+
+        .featured-text h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--recipe-primary);
+        }
+
+        .featured-text p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 10px 20px;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .recipes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recipe-nutrition {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/pages/recipes/" class="logo">Recipe Collection</a>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="#recipes">Recipes</a></li>
+                    <li><a href="#featured">Featured</a></li>
+                    <li><a href="walnut-chia-milk.html">Nut Milk</a></li>
+                    <li><a href="#nutrition">Nutrition</a></li>
+                    <li><a href="/" class="back-home">← Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <h1>Healthy Recipe Collection</h1>
+                <p>Delicious, nutritious recipes with detailed instructions and nutrition information</p>
+                <div class="hero-buttons">
+                    <a href="#featured" class="btn btn-primary">
+                        ⭐ Featured Recipe
+                    </a>
+                    <a href="#recipes" class="btn btn-secondary">
+                        📖 Browse All
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <span class="filter-label">Filter by:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="vegan">Vegan</button>
+                    <button class="filter-btn" data-filter="gluten-free">Gluten-Free</button>
+                    <button class="filter-btn" data-filter="high-protein">High Protein</button>
+                    <button class="filter-btn" data-filter="quick">Under 30 min</button>
+                    <button class="filter-btn" data-filter="plant-based">Plant-Based</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-recipe">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image">
+                    🥛
+                </div>
+                <div class="featured-text">
+                    <h2>Walnut Almond Chia Milk</h2>
+                    <p>A creamy, nutritious plant-based milk made with the Nutr machine. Perfect blend of walnuts, almonds, and chia seeds for a protein-rich, omega-3 packed beverage.</p>
+                    <div class="recipe-nutrition">
+                        <div class="nutrition-item">
+                            <div class="nutrition-value">300</div>
+                            <div class="nutrition-label">Calories</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-value">8g</div>
+                            <div class="nutrition-label">Protein</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-value">26g</div>
+                            <div class="nutrition-label">Healthy Fats</div>
+                        </div>
+                        <div class="nutrition-item">
+                            <div class="nutrition-value">5g</div>
+                            <div class="nutrition-label">Fiber</div>
+                        </div>
+                    </div>
+                    <a href="walnut-chia-milk.html" class="btn btn-primary">
+                        View Full Recipe →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recipes" class="recipes-section">
+        <div class="container">
+            <h2 class="section-title">All Recipes</h2>
+            <div class="recipes-grid" id="recipes-grid">
+                
+                <!-- Walnut Chia Milk Recipe -->
+                <div class="recipe-card" data-tags="vegan,gluten-free,plant-based,quick">
+                    <div class="recipe-image">
+                        🥛
+                        <div class="difficulty-badge difficulty-easy">Easy</div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Walnut Almond Chia Milk</h3>
+                        <p class="recipe-description">Creamy homemade plant-based milk with the Nutr machine. Rich in omega-3s and protein.</p>
+                        
+                        <div class="recipe-meta">
+                            <div class="recipe-time">
+                                ⏱️ 10 mins
+                            </div>
+                            <div class="recipe-servings">
+                                👥 2 servings
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-tags">
+                            <span class="recipe-tag vegan">Vegan</span>
+                            <span class="recipe-tag gluten-free">Gluten-Free</span>
+                            <span class="recipe-tag high-protein">High Protein</span>
+                        </div>
+                        
+                        <div class="recipe-nutrition">
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">300</div>
+                                <div class="nutrition-label">Cal</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">8g</div>
+                                <div class="nutrition-label">Protein</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">26g</div>
+                                <div class="nutrition-label">Fat</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">5g</div>
+                                <div class="nutrition-label">Fiber</div>
+                            </div>
+                        </div>
+                        
+                        <a href="walnut-chia-milk.html" class="recipe-link">
+                            View Recipe →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Placeholder recipes for demonstration -->
+                <div class="recipe-card" data-tags="vegan,gluten-free,plant-based">
+                    <div class="recipe-image">
+                        🥗
+                        <div class="difficulty-badge difficulty-easy">Easy</div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Rainbow Buddha Bowl</h3>
+                        <p class="recipe-description">Colorful, nutrient-packed bowl with quinoa, roasted vegetables, and tahini dressing.</p>
+                        
+                        <div class="recipe-meta">
+                            <div class="recipe-time">
+                                ⏱️ 25 mins
+                            </div>
+                            <div class="recipe-servings">
+                                👥 2 servings
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-tags">
+                            <span class="recipe-tag vegan">Vegan</span>
+                            <span class="recipe-tag gluten-free">Gluten-Free</span>
+                        </div>
+                        
+                        <div class="recipe-nutrition">
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">420</div>
+                                <div class="nutrition-label">Cal</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">12g</div>
+                                <div class="nutrition-label">Protein</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">18g</div>
+                                <div class="nutrition-label">Fat</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">8g</div>
+                                <div class="nutrition-label">Fiber</div>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="recipe-link">
+                            Coming Soon →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="recipe-card" data-tags="high-protein,quick">
+                    <div class="recipe-image">
+                        🥤
+                        <div class="difficulty-badge difficulty-easy">Easy</div>
+                    </div>
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">Chocolate Protein Smoothie</h3>
+                        <p class="recipe-description">Rich, creamy post-workout smoothie with plant protein, banana, and cacao.</p>
+                        
+                        <div class="recipe-meta">
+                            <div class="recipe-time">
+                                ⏱️ 5 mins
+                            </div>
+                            <div class="recipe-servings">
+                                👥 1 serving
+                            </div>
+                        </div>
+                        
+                        <div class="recipe-tags">
+                            <span class="recipe-tag high-protein">High Protein</span>
+                            <span class="recipe-tag vegan">Vegan</span>
+                        </div>
+                        
+                        <div class="recipe-nutrition">
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">280</div>
+                                <div class="nutrition-label">Cal</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">25g</div>
+                                <div class="nutrition-label">Protein</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">8g</div>
+                                <div class="nutrition-label">Fat</div>
+                            </div>
+                            <div class="nutrition-item">
+                                <div class="nutrition-value">6g
